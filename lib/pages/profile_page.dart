@@ -3,327 +3,163 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
+  Widget buildInfoCard(String title, String value) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: 5),
+          Text(
+            value,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      backgroundColor: const Color(0xffF5F7FB),
+      backgroundColor: const Color(0xffF5F6FA),
 
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
 
           child: Column(
             children: [
 
-              // Header Section
-              Container(
-                height: 250,
-                width: double.infinity,
+              const SizedBox(height: 10),
 
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff4A6CF7),
-                      Color(0xff6A8DFF),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  ),
-                ),
-
-
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-
-                  children: [
-
-                    const CircleAvatar(
-                      radius: 55,
-
-                      backgroundImage: NetworkImage(
-                        "https://i.pravatar.cc/300",
-                      ),
-                    ),
-
-
-                    const SizedBox(height: 15),
-
-
-                    const Text(
-                      "MD Mahmudur Hasan",
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-
-                    const SizedBox(height: 5),
-
-
-                    const Text(
-                      "Computer Science Student",
-
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 16,
-                      ),
-                    ),
-
-                  ],
+              const Text(
+                "User Profile",
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-
-
 
               const SizedBox(height: 25),
 
-
-
-              // About Card
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-
-                child: Card(
-
-                  elevation: 5,
-
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-
-
-                  child: Padding(
-
-                    padding: const EdgeInsets.all(20),
-
-                    child: Column(
-
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-
-
-                      children: [
-
-
-                        const Text(
-                          "About Me",
-
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-
-                        const SizedBox(height: 15),
-
-
-                        const Text(
-
-                          "I am a Computer Science student "
-                          "interested in software development, "
-                          "mobile application development, "
-                          "IoT and Artificial Intelligence. "
-                          "I love solving problems and learning "
-                          "new technologies.",
-
-
-                          style: TextStyle(
-                            fontSize: 16,
-                            height: 1.6,
-                            color: Colors.black87,
-                          ),
-                        ),
-
-
-                      ],
-                    ),
-                  ),
+              const CircleAvatar(
+                radius: 55,
+                backgroundImage: AssetImage(
+                  "assets/images/profile.png",
                 ),
               ),
 
+              const SizedBox(height: 25),
 
+              buildInfoCard(
+                "Name",
+                "MD MAHMUDUR HASAN",
+              ),
 
-              const SizedBox(height: 20),
+              buildInfoCard(
+                "Student ID",
+                "2222081",
+              ),
 
+              buildInfoCard(
+                "Email",
+                "2222081@iub.edu.bd",
+              ),
 
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
 
-              // Information Cards
-              Padding(
-
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                    ),
+                  ],
                 ),
 
-
-                child: Column(
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
 
-
-                    profileItem(
-                      Icons.school,
-                      "Education",
-                      "Independent University, Bangladesh",
+                    Text(
+                      "Bio / Story",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                      ),
                     ),
 
+                    SizedBox(height: 10),
 
-                    profileItem(
-                      Icons.code,
-                      "Programming",
-                      "Flutter, Dart, Python, JavaScript",
+                    Text(
+                      "I am Md Mahmudur Hasan, a Computer Science student at Independent University, Bangladesh (IUB). I am passionate about Flutter app development, web technologies, and UI/UX design. I enjoy building modern, user-friendly applications and continuously improving my programming and problem-solving skills through academic and personal projects.",
+                      style: TextStyle(
+                        fontSize: 15,
+                        height: 1.6,
+                      ),
                     ),
-
-
-                    profileItem(
-                      Icons.location_on,
-                      "Location",
-                      "Dhaka, Bangladesh",
-                    ),
-
-
-                    profileItem(
-                      Icons.email,
-                      "Email",
-                      "mahmudur@example.com",
-                    ),
-
 
                   ],
                 ),
               ),
 
+              const SizedBox(height: 30),
 
+              SizedBox(
+                width: double.infinity,
+                height: 55,
 
-              const SizedBox(height: 20),
+                child: ElevatedButton(
+                  onPressed: () {},
 
-
-
-              // Skills
-              Padding(
-
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-
-
-                child: Card(
-
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
 
-
-                  child: Padding(
-
-                    padding: const EdgeInsets.all(20),
-
-
-                    child: Column(
-
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-
-
-                      children: [
-
-
-                        const Text(
-                          "Skills",
-
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-
-                        const SizedBox(height: 15),
-
-
-                        Wrap(
-
-                          spacing: 10,
-
-                          children: [
-
-
-                            skillChip("Flutter"),
-
-                            skillChip("Dart"),
-
-                            skillChip("Python"),
-
-                            skillChip("IoT"),
-
-                            skillChip("Database"),
-
-                            skillChip("GitHub"),
-
-                          ],
-                        )
-
-                      ],
+                  child: const Text(
+                    "Edit Profile",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-
-
-              const SizedBox(height: 30),
-
-
-              // Button
-
-              ElevatedButton(
-
-                style: ElevatedButton.styleFrom(
-
-                  backgroundColor:
-                      const Color(0xff4A6CF7),
-
-                  padding:
-                      const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 15,
-                  ),
-
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(30),
-                  ),
-
-                ),
-
-
-                onPressed: () {},
-
-
-                child: const Text(
-                  "Edit Profile",
-
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-
-              ),
-
-
-
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
             ],
           ),
@@ -331,70 +167,4 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-
-
-
-
-  // Profile Item Widget
-
-  Widget profileItem(
-      IconData icon,
-      String title,
-      String value,
-      ) {
-
-    return Card(
-
-      margin:
-          const EdgeInsets.only(bottom: 12),
-
-
-      child: ListTile(
-
-        leading: CircleAvatar(
-
-          backgroundColor:
-              const Color(0xffE8EDFF),
-
-          child: Icon(
-            icon,
-            color:
-                const Color(0xff4A6CF7),
-          ),
-        ),
-
-
-        title: Text(
-          title,
-
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-
-
-        subtitle: Text(value),
-
-      ),
-    );
-  }
-
-
-
-
-  // Skill Chip Widget
-
-  Widget skillChip(String text) {
-
-    return Chip(
-
-      label: Text(text),
-
-
-      backgroundColor:
-          const Color(0xffE8EDFF),
-
-    );
-  }
-
 }
